@@ -1,0 +1,13 @@
+{
+  "version": "2015.2.624",
+  "scripts_url": "http://cdn.kendostatic.com/{version}/js/",
+  "scripts_path": "js",
+  "scripts": [
+    "kendo.all.min.js"
+  ],
+  "styles_url": "http://cdn.kendostatic.com/{version}/styles/",
+  "styles_path": "styles",
+  "styles": [
+    "kendo.silver.min.css"
+  ]
+}
