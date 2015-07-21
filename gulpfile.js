@@ -30,6 +30,8 @@ gulp.task('fetch:js', function() {
     config.scripts_url = config.scripts_url.replace('{version}', config.version);
 
     for(var i = 0; i < config.scripts.length; i++){
+        var path = config.scripts[i].split('/');
+        if(path.length > 1) config.scripts_path += '/' + path[0];
         download(config.scripts_url + config.scripts[i])
             .pipe(gulp.dest(config.scripts_path));
     }
@@ -43,6 +45,8 @@ gulp.task('fetch:css', function() {
     config.styles_url = config.styles_url.replace('{version}', config.version);
 
     for(var i = 0; i < config.styles.length; i++){
+        var path = config.styles[i].split('/');
+        if(path.length > 1) config.styles_url += '/' + path[0];
         download(config.styles_url + config.styles[i])
             .pipe(gulp.dest(config.styles_path));
     }
