@@ -7,7 +7,5 @@
   ],
   "styles_url": "http://cdn.kendostatic.com/{version}/styles/",
   "styles_path": "styles",
-  "styles": [
-    "kendo.silver.min.css"
-  ]
+  "styles": []
 }
