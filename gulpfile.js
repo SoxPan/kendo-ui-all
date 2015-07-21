@@ -14,8 +14,20 @@ gulp.task('default', ['fetch']);
 /**
  * Empty javascript and css directories.
  */
-gulp.task('clean', function() {
-   return del([config.scripts_path, config.styles_path]);
+gulp.task('clean',['clean:js', 'clean:css']);
+
+/**
+ * Empty javascript directory.
+ */
+gulp.task('clean:js', function() {
+    return del(config.scripts_path);
+});
+
+/**
+ * Empty css directory.
+ */
+gulp.task('clean:css', function() {
+    return del(config.styles_path);
 });
 
 /**
@@ -31,9 +43,9 @@ gulp.task('fetch:js', function() {
 
     for(var i = 0; i < config.scripts.length; i++){
         var path = config.scripts[i].split('/');
-        if(path.length > 1) config.scripts_path += '/' + path[0];
+        var scripts_path = path.length > 1 ? config.scripts_path + '/' + path[0] : config.scripts_path;
         download(config.scripts_url + config.scripts[i])
-            .pipe(gulp.dest(config.scripts_path));
+            .pipe(gulp.dest(scripts_path));
     }
 
 });
@@ -46,8 +58,8 @@ gulp.task('fetch:css', function() {
 
     for(var i = 0; i < config.styles.length; i++){
         var path = config.styles[i].split('/');
-        if(path.length > 1) config.styles_url += '/' + path[0];
+        var styles_path = path.length > 1 ? config.styles_path + '/' + path[0] : config.styles_path;
         download(config.styles_url + config.styles[i])
-            .pipe(gulp.dest(config.styles_path));
+            .pipe(gulp.dest(styles_path));
     }
 });
